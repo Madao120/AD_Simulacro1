@@ -17,6 +17,10 @@ public class FileService {
     }
 
     public static void serializar(Videoxogo videoxogo) throws IOException {
+        File file = new File(ruta);
+
+        try (FileOutputStream FOS = new FileOutputStream(file)):
+
         ObjectOutputStream oos =
                 new ObjectOutputStream(new FileOutputStream(videoxogo.getTitulo()));
         oos.writeObject(videoxogo);
@@ -30,17 +34,17 @@ public class FileService {
         ois.close();
     }
 
-    public static void transformarXML (ArrayList<Videoxogo> videoxogoList){
+    public static void transformarXML (ArrayList<Videoxogo> videoxogoList) {
         for (Videoxogo videoxogo : videoxogoList) {
-            try(
-                    XMLOutputFactory factory = XMLOutputFactory.newInstance();
-                    XMLStreamWriter writer =
-                            factory.createXMLStreamWriter(new FileWriter("juegos.xml"));
-            ){
-                XSW.writeStartDocument();
+            try {
+                XMLOutputFactory factory = XMLOutputFactory.newInstance();
+                XMLStreamWriter writer =
+                        factory.createXMLStreamWriter(new FileWriter("juegos.xml"));
+            } catch (Exception e) {
 
             }
         }
+    }
 
     public static void main() throws IOException, ClassNotFoundException {
         List<Videoxogo> videoxogoList = new ArrayList<>();
