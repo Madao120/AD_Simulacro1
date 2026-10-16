@@ -119,6 +119,22 @@ public class VideoxogoService {
         }
     }
 
+    public static void updateVideoxogoPlataforma (String plataforma, int id) {
+        String sql = "UPDATE Videoxogo SET Plataforma = ? WHERE id = ?";
+
+        try (Connection conn = DBconnector.conexion();
+             PreparedStatement ps = conn.prepareStatement(sql)
+        ){
+            ps.setString(1, plataforma);
+            ps.setInt(2, id);
+            int n = ps.executeUpdate();
+            System.out.println("Actualizáronse " + n + "videoxogos");
+
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
     // READ ONE
 
 }
