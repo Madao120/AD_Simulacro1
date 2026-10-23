@@ -4,13 +4,25 @@ public class Funciones {
    /*
    public static void executeSQL (algo){
         String sql = ""
-        try (Connection conn = DBconnector.conexion() ;
+        try (Connection conn = new DBconnector().conexion() ;
              PreparedStatement ps = conn.prepareStatement(sql);
+             //EN read
              ResultSet rs = ps.executeQuery() ;
         ){
 
+        // Si tenemos que poner los ? en String
+        ps.setString(1, algo.nombre)
+
+        // En read:
         while(rs.next(){
+            Clase nombre = new Clase(
+            rs.getString("algo"))
         }
+
+        // EN update/insert/delete
+        int n = ps.executeUpdate()--en este caso sabremos cuantas iteraciones tenía
+
+
 
     }
 
